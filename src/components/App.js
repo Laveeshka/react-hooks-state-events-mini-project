@@ -33,12 +33,17 @@ function App() {
     }
   })
 
+  function addTask(task){
+    const newTasks = [...tasks, task];
+    setTasks(newTasks);
+  }
+
   //pass filteredTasks instead of tasks as prop in TaskList
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} selectedCategory={category} handleSelectedCategory={handleSelectedCategory}/>
-      <NewTaskForm />
+      <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={addTask}/>
       <TaskList tasksData={filteredTasks} removeTask={removeTask}/> 
     </div>
   );
